@@ -1,0 +1,109 @@
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Thin.ttf);
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Thin.ttf);
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-ExtraLight.ttf);
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Light.ttf);
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Regular.ttf);
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Medium.ttf);
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-SemiBold.ttf);
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Bold.ttf);
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-ExtraBold.ttf);
+	font-weight: 800;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DMSans';
+	src: url(./DMSans/DMSans-Black.ttf);
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-ExtraLight.ttf);
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-Light.ttf);
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-Regular.ttf);
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-Medium.ttf);
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-SemiBold.ttf);
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-Bold.ttf);
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-ExtraBold.ttf);
+	font-weight: 800;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url(./Inconsolata/Inconsolata-Black.ttf);
+	font-weight: 900;
+	font-style: normal;
+}

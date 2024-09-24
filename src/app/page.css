@@ -1,0 +1,15 @@
+.outerContainer {
+	width: 100vw;
+	height: fit-content;
+	background-color: red;
+	background-color: var(--color-white);
+}
+
+.bodyContainer {
+	max-width: 107.8rem;
+	height: fit-content;
+	background-color: var(--color-grey);
+	border-radius: 10px;
+	margin: auto;
+	padding-bottom: 20rem;
+}
