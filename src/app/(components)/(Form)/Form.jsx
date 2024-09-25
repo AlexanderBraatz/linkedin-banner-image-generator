@@ -23,14 +23,11 @@ export default function Form(props) {
 
 		try {
 			setIsLoading(true);
-			const response = await fetch(
-				'http://localhost:3000/api/generate-banner',
-				{
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ prompt })
-				}
-			);
+			const response = await fetch('/api/generate-banner', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ prompt })
+			});
 
 			if (!response.ok) {
 				throw new Error('Failed to generate banner');
