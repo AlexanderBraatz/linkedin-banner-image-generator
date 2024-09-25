@@ -46,7 +46,7 @@ export default function Instructions(props) {
 					<RightSide>
 						<ParagraphContainer id={'two'}>
 							<Paragraph>
-								Klicke auf den "Bild generieren"-Button und warte einen Moment,
+								Klicke auf den Bild generieren Button und warte einen Moment,
 								während die KI deine Worte in das gewünschte Bild umsetzt.
 							</Paragraph>
 						</ParagraphContainer>
