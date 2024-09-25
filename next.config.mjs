@@ -8,6 +8,9 @@ const nextConfig = {
 				hostname: '**'
 			}
 		]
+	},
+	compiler: {
+		styledComponents: true
 	}
 };
 

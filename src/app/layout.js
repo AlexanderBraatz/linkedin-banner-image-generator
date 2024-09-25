@@ -2,12 +2,13 @@
 // import Link from 'next/link';
 import './globals.css';
 import '../assets/fonts/fonts.css';
+import StyledComponentsRegistry from './(lib)/registry';
 
 export default function RootLayout({ children }) {
 	return (
 		<html>
 			<body>
-				<main>{children}</main>
+				<StyledComponentsRegistry>{children}</StyledComponentsRegistry>
 			</body>
 		</html>
 	);
