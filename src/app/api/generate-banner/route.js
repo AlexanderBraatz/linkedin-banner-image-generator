@@ -53,7 +53,7 @@ export async function POST(request) {
 				aspect_ratio: '21:9',
 				output_quality: 80,
 				prompt_strength: 0.8,
-				num_inference_steps: 28
+				num_inference_steps: 4 // new limit set by flux schnell as of october 2024 the intial version used 28
 			}
 		});
 
