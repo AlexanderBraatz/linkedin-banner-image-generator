@@ -5,7 +5,10 @@ import React from 'react';
 export default function InputForm({
 	handleTextareaChange,
 	prompt,
-	handleSubmit
+	handleSubmit,
+	changeModelToSchnell,
+	changeModelToDev,
+	model
 }) {
 	return (
 		<StyledForm onSubmit={handleSubmit}>
@@ -16,6 +19,25 @@ export default function InputForm({
 				placeholder="Beschreiben Sie Ihr Bild detailliert…"
 			></Textarea>
 			<ButtonContainer>
+				<ModelSelectionButtonContainer>
+					<Button
+						// className={model.current === 'schnell' ? 'selected' : ''}
+						className={model === 'schnell' ? 'selected' : ''}
+						type="action"
+						onClick={changeModelToSchnell}
+					>
+						<Label>Schnell</Label>
+					</Button>
+					<Button
+						// className={model.current === 'dev' ? 'selected' : ''}
+						className={model === 'dev' ? 'selected' : ''}
+						type="action"
+						onClick={changeModelToDev}
+					>
+						<Label>Dev</Label>
+					</Button>
+				</ModelSelectionButtonContainer>
+
 				<Button
 					type="submit"
 					onClick={handleSubmit}
@@ -73,9 +95,15 @@ const Textarea = styled.textarea`
 
 const ButtonContainer = styled.div`
 	display: flex;
-	justify-content: right;
+	justify-content: space-between;
 	align-items: center;
 	padding-top: 1rem;
+`;
+const ModelSelectionButtonContainer = styled.div`
+	display: flex;
+	justify-content: left;
+	gap: 0.8rem;
+	align-items: center;
 `;
 
 const Button = styled.button`
@@ -86,6 +114,11 @@ const Button = styled.button`
 	border-radius: 100px;
 	cursor: pointer;
 	font-size: 16px;
+	&.selected {
+		background-color: var(--color-purple_dark);
+		border: 2px solid var(--color-purple_medium);
+		color: var(--color-white);
+	}
 
 	&:hover {
 		background-color: var(--color-purple_medium);
