@@ -53,7 +53,7 @@ export async function POST(request) {
 				aspect_ratio: '21:9',
 				output_quality: 80,
 				prompt_strength: 0.8,
-				num_inference_steps: 50
+				num_inference_steps: 28
 			}
 		});
 

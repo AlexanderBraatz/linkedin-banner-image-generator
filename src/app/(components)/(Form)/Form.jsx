@@ -10,11 +10,15 @@ import LinkBox from './(LinkBox)/LinkBox.jsx';
 import Examples from './(Examples)/Examples.jsx';
 
 export default function Form(props) {
-	console.log('form has reloded');
-	const [output, setOutput] = useState(['/images/Grey2BannerBackground.png']);
+	const [outputExternalLinkToGenImg, setOutputExternalLinkToGenImg] = useState(
+		'/images/Grey2BannerBackground.png'
+	);
 	const [prompt, setPrompt] = useState('');
 	const [qRcodeSrc, setQRcodeSrc] = useState('/images/blankQRcode.png');
 	const [isLoading, setIsLoading] = useState(false);
+	const [hasGenerated, setHasGenerated] = useState(false);
+	const [downloadURL, setDownloadURL] = useState('/download');
+	const [displayExamples, setDisplayExamples] = useState(true);
 
 	// logic for selecting different black forest labs models
 	// const model = useRef('schnell');
@@ -22,27 +26,52 @@ export default function Form(props) {
 
 	function changeModelToSchnell(e) {
 		e.preventDefault();
-		console.log('changeModelToSchnell has run');
 		// model.current = 'schnell';
 		setModel('schnell');
 	}
 	function changeModelToDev(e) {
 		e.preventDefault();
-		console.log('changeModelToDev has run');
 		// model.current = 'dev';
 		setModel('dev');
+	}
+	function toggleModel(e) {
+		e.preventDefault();
+		if (model === 'schnell') {
+			setModel('dev');
+		} else {
+			setModel('schnell');
+		}
 	}
 
 	function handleExampleSelection(example) {
 		setPrompt(example);
-		console.log('handleExampleSelection in Form', prompt);
+		setDisplayExamples(false);
 	}
 
+	function handleClear(e) {
+		e.preventDefault();
+		setPrompt('');
+	}
+	function handleDisplayExamples(e) {
+		e.preventDefault();
+		setDisplayExamples(prevValue => !prevValue);
+	}
+
+	function extractLinkId(url) {
+		// Assuming the URL is always in this format
+		const parts = url.split('/');
+		const yhqmIndex = parts.indexOf('yhqm');
+		if (yhqmIndex !== -1 && parts.length > yhqmIndex + 1) {
+			return parts[yhqmIndex + 1]; // This is the linkId
+		}
+		return null;
+	}
 	const generateBanner = async e => {
 		e.preventDefault();
 
 		try {
 			setIsLoading(true);
+			setDisplayExamples(false);
 			const response = await fetch(`/api/generate-banner/${model}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -55,19 +84,34 @@ export default function Form(props) {
 			if (response) {
 				const data = await response.json();
 				if (data) {
-					setOutput(data.output);
-					QRCode.toDataURL(data.output[0], {
+					//set external image link
+					setOutputExternalLinkToGenImg(data.output[0]);
+
+					//make relative link to [my-site]/download page that matches the generated image
+					const bannerImageURL = data.output[0];
+					const linkId = extractLinkId(bannerImageURL);
+					const downloadURL = `/download/${linkId}`;
+
+					//make explicit link to [my-site]/download page that matches the generated image
+					const baseUrl = window.location.origin; // gets base url
+					const downloadURLExplicit = `${baseUrl}/download/${linkId}`; //points to local host in dev and base url in production
+					setDownloadURL(downloadURL);
+					//use QRCode to make a url to use as src for QR code
+					QRCode.toDataURL(downloadURLExplicit, {
 						version: 5, // Defines the size of the QR code
 						errorCorrectionLevel: 'L', // Error correction level
 						scale: 10, // Size of each box in the QR code (similar to box_size)
 						margin: 4 // Thickness of the border
 					}).then(url => setQRcodeSrc(url));
+
+					setHasGenerated(true);
 				}
 			}
 		} catch (error) {
 			console.error(error);
 		} finally {
 			setIsLoading(false);
+			setModel('schnell');
 		}
 	};
 	return (
@@ -79,27 +123,34 @@ export default function Form(props) {
 				changeModelToSchnell={e => changeModelToSchnell(e)}
 				changeModelToDev={e => changeModelToDev(e)}
 				model={model}
+				handleClear={handleClear}
+				handleDisplayExamples={e => handleDisplayExamples(e)}
+				displayExamples={displayExamples}
+				toggleModel={toggleModel}
+			/>
+			<Examples
+				isLoading={isLoading}
+				handleExampleSelection={handleExampleSelection}
+				displayExamples={displayExamples}
 			/>
 			<Circles
 				offSet={0}
 				isLoading={isLoading}
+				displayExamples={displayExamples}
 			/>
 			<GeneratedBanner
 				isLoading={isLoading}
-				bannerImageURL={output[0]}
+				bannerImageURL={outputExternalLinkToGenImg}
 			/>
 			<Circles
 				offSet={3}
 				isLoading={isLoading}
 			/>
 			<LinkBox
-				bannerImageURL={output[0]}
+				urlIsProvided={hasGenerated}
+				bannerImageURL={downloadURL}
 				qRcodeSrc={qRcodeSrc}
 				isLoading={isLoading}
-			/>
-			<Examples
-				isLoading={isLoading}
-				handleExampleSelection={handleExampleSelection}
 			/>
 		</>
 	);

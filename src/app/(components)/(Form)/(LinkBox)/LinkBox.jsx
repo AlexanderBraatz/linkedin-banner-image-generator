@@ -3,7 +3,12 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import React from 'react';
 
-export default function LinkBox({ isLoading, qRcodeSrc, bannerImageURL }) {
+export default function LinkBox({
+	isLoading,
+	qRcodeSrc,
+	bannerImageURL,
+	urlIsProvided
+}) {
 	return (
 		<Container className={isLoading ? 'isLoading' : ''}>
 			<Image
@@ -16,7 +21,9 @@ export default function LinkBox({ isLoading, qRcodeSrc, bannerImageURL }) {
 					marginTop: '1.5rem'
 				}}
 			/>
-			{isLoading ? (
+			{!urlIsProvided ? (
+				<LinkContainerPlaceholder>Kein Bild vorhanden</LinkContainerPlaceholder>
+			) : isLoading ? (
 				<LinkContainerPlaceholder>loading . . .</LinkContainerPlaceholder>
 			) : (
 				<LinkContainer
@@ -60,7 +67,7 @@ const Container = styled.div`
 `;
 const LinkContainerPlaceholder = styled.span`
 	background-color: var(--color-white);
-	color: var(--color-purple_dark);
+	color: var(--color-purple_light);
 	padding: 6px 20px;
 	border: 2px solid var(--color-purple_dark);
 	border-radius: 10px;

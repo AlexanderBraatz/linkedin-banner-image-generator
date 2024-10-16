@@ -32,9 +32,6 @@ export default function Examples({ data, handleExampleSelection }) {
 				<ButtonContainer>
 					<Button
 						type="button"
-						// onClick={example => {
-						// 	handleExampleSelection(example);
-						// }}
 						onClick={e => handleClick(e)}
 					>
 						<Label>Beispiel übernehmen</Label>
@@ -53,6 +50,7 @@ const Container = styled.form`
 	border-radius: 1rem;
 	width: 46.4rem;
 	overflow: hidden;
+	border: 2px solid var(--color-purple_dark);
 `;
 
 const ImageContainer = styled.div`
@@ -62,22 +60,11 @@ const ImageContainer = styled.div`
 	justify-content: center;
 `;
 
-// const Image = styled.img`
-// max-width: 100%;
-// height: auto;
-// width: 100%;
-// height: 100%;
-// object-fit: cover;
-// `;
-
 const BodyContainer = styled.div`
 	width: 100%;
 	text-align: left;
 	padding: 2rem;
-	border-top: 1px solid var(--color-purple_medium);
-	border-left: 2px solid var(--color-purple_medium);
-	border-right: 2px solid var(--color-purple_medium);
-	border-bottom: 2px solid var(--color-purple_medium);
+	border-top: 1px solid var(--color-purple_dark);
 	border-radius: 0 0 1rem 1rem;
 `;
 
@@ -85,6 +72,7 @@ const Heading = styled.h2`
 	font-size: 1.5rem;
 	color: var(--color-purple_dark);
 	margin-bottom: 10px;
+	font-weight: 900;
 `;
 
 const Paragraph = styled.p`
@@ -110,9 +98,16 @@ const Button = styled.button`
 	cursor: pointer;
 	font-size: 16px;
 
+	font-weight: 600;
+	position: relative;
+	transition: 50ms ease-in;
 	&:hover {
+		/* background-color: var(--color-purple_medium);
+		color: var(--color-white); */
 		background-color: var(--color-purple_medium);
+		border: 2px solid var(--color-purple_dark);
 		color: var(--color-white);
+		transform: scale(1.04);
 	}
 
 	&:active {

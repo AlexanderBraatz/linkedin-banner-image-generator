@@ -1,7 +1,7 @@
 'use client';
 import styled from 'styled-components';
-import React from 'react';
 import Example from '../(Example)/Example.jsx';
+import React, { useState, useEffect } from 'react';
 
 let examplesData = [
 	{
@@ -10,9 +10,9 @@ let examplesData = [
 			'Banner Style: Professional event imagery, with bold typography announcing upcoming speaking engagements. Text: “Speaker | Upcoming at XYZ Conference 2024” Approach: This banner showcases professional credibility by highlighting participation in major events, perfect for building authority as a thought leader'
 	},
 	{
-		imageSrc: '/images/Banner_Trainer.png',
+		imageSrc: '/images/Banner_Trainer2.png',
 		description:
-			'Banner Style: An energetic image with action shots of people exercising, vibrant colors, and motivational phrases in the center right of the banner. Text: “Transforming Lives” Approach: The banner uses action photography and motivating text to convey energy and commitment, appealing to health-conscious professionals'
+			'Banner Style: An energetic image with action shots of people exercising, vibrant colors, and a motivational phrase in the center right of the banner. Text: “Transforming Lives” Approach: The banner uses action photography and motivating text to convey energy and commitment, appealing to health-conscious professionals'
 	},
 	{
 		imageSrc: '/images/Banner_Leadership.png',
@@ -26,27 +26,97 @@ let examplesData = [
 	}
 ];
 
-export default function Examples({ handleExampleSelection }) {
+export default function Examples({ handleExampleSelection, displayExamples }) {
+	const [isDisplayNone, setIsDisplayNone] = useState(false);
+
+	useEffect(() => {
+		if (displayExamples) {
+			setIsDisplayNone(!displayExamples);
+		} else {
+			setTimeout(() => setIsDisplayNone(!displayExamples), 200);
+		}
+	}, [displayExamples]);
+
 	return (
-		<Container>
-			{examplesData.map((exampleData, i) => (
-				<Example
-					data={exampleData}
-					handleExampleSelection={handleExampleSelection}
-					key={i}
-				/>
-			))}
-		</Container>
+		<BackGround
+			className={`${displayExamples ? '' : 'hide'} ${
+				isDisplayNone ? 'displayNone' : ''
+			}`}
+		>
+			<GreyBackground>
+				<Container>
+					{examplesData.map((exampleData, i) => (
+						<Example
+							data={exampleData}
+							handleExampleSelection={handleExampleSelection}
+							key={i}
+						/>
+					))}
+				</Container>
+			</GreyBackground>
+		</BackGround>
 	);
 }
+const GreyBackground = styled.div`
+	background-color: var(--color-grey2);
+	padding: 20px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	border-radius: 1rem;
+	width: 1020px;
+	margin: auto;
+`;
 
+const BackGround = styled.div`
+	position: absolute;
+	transform: translateY(-64px);
+	z-index: 10;
+	width: 107.8rem;
+	background-color: var(--color-grey);
+	padding-top: 64px;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 40px;
+
+	opacity: 1;
+	animation: 0.2s ease-out 0s 1 slideInFromTop;
+
+	@keyframes slideInFromTop {
+		0% {
+			transform: translateY(-84px);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(-64px);
+			opacity: 1;
+		}
+	}
+	@keyframes slideOutToTop {
+		0% {
+			transform: translateY(-64px);
+		}
+		100% {
+			transform: translateY(-74px);
+		}
+	}
+
+	&.hide {
+		animation: 0.2s ease-out 0s 1 slideOutToTop;
+		opacity: 0;
+		/* Make sure it's hidden after animation ends */
+		transition: opacity 0.2s ease-out; /* visibility hidden after 0.2s */
+	}
+	&.displayNone {
+		display: none;
+	}
+`;
 const Container = styled.div`
+	margin: auto;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
-	column-gap: 2rem;
-	row-gap: 2rem;
-	max-width: 950px;
-	margin: 0 auto;
+	column-gap: 1.2rem;
+	row-gap: 2.4rem;
+	width: 940px;
 `;

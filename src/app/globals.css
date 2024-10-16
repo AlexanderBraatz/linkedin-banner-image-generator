@@ -3,8 +3,11 @@
 	--color-grey: #f7f7f7;
 	--color-grey2: #e5e4e4;
 	--color-purple_dark: #493c80;
+	--color-purple_dark_green: #3c8049;
 	--color-purple_medium: #8582c3;
 	--color-purple_light: #c9c8e1;
+	--color-purple_light_green: #c8e1c9;
+	--color-purple_light_red: #e1c9c8;
 	--color-purple_button: #423da4;
 }
 
@@ -20,7 +23,7 @@ body {
 	font-size: 10px;
 	overflow-x: hidden;
 	max-width: 100%;
-	background-color: #202b30;
+	background-color: #ffffff;
 	width: 100%;
 	/* Prevents inconsistencies between window.innerWidth and media queries caused by scrollbar width */
 	/* Since the scrollbar is not a child of the body and window.innerWidth excludes it, this solution works. However, in Safari, media queries and responsive layouts may be off by approximately 15px due to the scrollbar width. */

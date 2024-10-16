@@ -1,0 +1,46 @@
+import { NextResponse } from 'next/server';
+
+export async function GET(request) {
+	try {
+		const { searchParams } = new URL(request.url);
+		const linkId = searchParams.get('linkId');
+
+		if (!linkId) {
+			return NextResponse.json(
+				{ error: 'Missing linkId parameter' },
+				{ status: 400 }
+			);
+		}
+
+		const downloadURL = `https://replicate.delivery/yhqm/${linkId}/out-0.png`;
+
+		// Fetch the image from the remote server
+		const response = await fetch(downloadURL);
+
+		if (!response.ok) {
+			return NextResponse.json(
+				{ error: 'Error fetching the file' },
+				{ status: response.status }
+			);
+		}
+
+		const contentType =
+			response.headers.get('content-type') || 'application/octet-stream';
+		const contentDisposition = 'attachment; filename="banner.png"';
+		const buffer = await response.arrayBuffer();
+
+		return new NextResponse(Buffer.from(buffer), {
+			status: 200,
+			headers: {
+				'Content-Type': contentType,
+				'Content-Disposition': contentDisposition
+			}
+		});
+	} catch (error) {
+		console.error('API Route Error:', error);
+		return NextResponse.json(
+			{ error: 'Internal Server Error' },
+			{ status: 500 }
+		);
+	}
+}
