@@ -94,11 +94,18 @@ export default function Form(props) {
 
 					//make explicit link to [my-site]/download page that matches the generated image
 					const baseUrl = window.location.origin; // gets base url
-					const downloadURLExplicit = `${baseUrl}/download/${linkId}`; //points to local host in dev and base url in production
+					console.log(baseUrl);
+					let downloadURLExplicit;
+					if (baseUrl === 'http://localhost:3000') {
+						downloadURLExplicit = `${baseUrl}/download/${linkId}`; //points to local host in dev and base url in production
+					} else {
+						downloadURLExplicit = `https://linkedin-banner-image-generator.vercel.app/download/${linkId}`; //points to local host in dev and base url in production
+					}
+
 					setDownloadURL(downloadURL);
 					//use QRCode to make a url to use as src for QR code
 					QRCode.toDataURL(downloadURLExplicit, {
-						version: 5, // Defines the size of the QR code
+						version: 6, // Defines the size of the QR code
 						errorCorrectionLevel: 'L', // Error correction level
 						scale: 10, // Size of each box in the QR code (similar to box_size)
 						margin: 4 // Thickness of the border
