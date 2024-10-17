@@ -37,7 +37,7 @@ export default function DownloadPage({ params }) {
 
 			const link = document.createElement('a');
 			link.href = url;
-			link.setAttribute('download', `Quadriga_Linkedin_banner.png`);
+			link.setAttribute('download', `quadriga_Linkedin_banner.png`);
 			document.body.appendChild(link);
 			link.click();
 			link.parentNode.removeChild(link);
@@ -70,14 +70,47 @@ export default function DownloadPage({ params }) {
 						</ImageContainer>
 						{/* </ImageContainer> */}
 						<BodyContainer>
-							{/* <SubHeadingContainer> */}
-							<SubHeading>Hier ist ihr Bild !</SubHeading>
-							{/* </SubHeadingContainer> */}
-							<Paragraph>
-								Vielen Dank, dass Sie unseren Generator genutzt haben. Ihr
-								individuelles Bild ist nun bereit zum Download. Klicken Sie
-								einfach auf den Button, um es auf Ihrem Gerät zu speichern.
-							</Paragraph>
+							<ParagraphTitle>So laden Sie das Bild herunter</ParagraphTitle>
+							<br />
+							<ParagraphSubTitle>Android</ParagraphSubTitle>
+							<ol>
+								<Li>
+									<Paragraph>Tippen Sie auf das Bild.</Paragraph>
+								</Li>
+								<Li>
+									<Paragraph>
+										Tippen Sie auf <Strong>Mehr</Strong> (Symbol mit drei
+										Punkten).
+									</Paragraph>
+								</Li>
+								<Li>
+									<Paragraph>
+										Wählen Sie <Strong>Speichern</Strong>.
+									</Paragraph>
+								</Li>
+							</ol>
+							<ParagraphSubTitle>iPhone</ParagraphSubTitle>
+							<ol>
+								<Li>
+									<Paragraph>Berühren und halten Sie das Bild.</Paragraph>
+								</Li>
+								<Li>
+									<Paragraph>
+										Tippen Sie auf <Strong>In Fotos sichern</Strong>.
+									</Paragraph>
+								</Li>
+							</ol>
+							<br />
+							<ParagraphSubTitle>Oder</ParagraphSubTitle>
+							<ul>
+								<Li>
+									<Paragraph>
+										Klicken Sie auf <Strong>Bild Herunterladen</Strong>, um das
+										Bild direkt in Ihrem Downloads-Ordner zu speichern.
+									</Paragraph>
+								</Li>
+							</ul>
+
 							<ButtonContainer>
 								<ButtonDownloadLink onClick={e => handleDownload(e)}>
 									<Label>Bild Herunterladen</Label>
@@ -112,19 +145,18 @@ const Heading = styled.div`
 const PageContainer = styled.div`
 	width: 100%;
 	max-width: 360px;
-	padding: 0.8rem;
+	padding: 0rem 0.2rem;
 	margin: auto;
 `;
 
 const Card = styled.div`
-	/* margin-left: 0.8rem;
-	margin-right: 0.8rem; */
 	margin: auto;
 	width: 100%;
 	background-color: var(--color-purple_light);
-	border-radius: 1rem;
+	border-radius: 0 0 1rem 1rem;
 	overflow: hidden;
 	animation: 0.5s ease-out 0s 1 slideInFromBottom;
+	border: 1px solid var(--color-purple_dark);
 
 	@keyframes slideInFromBottom {
 		0% {
@@ -148,36 +180,62 @@ const BodyContainer = styled.div`
 	padding: 2rem;
 	padding-top: 2.4rem;
 	border-top: 1px solid var(--color-purple_medium);
-	border-left: 2px solid var(--color-purple_medium);
+	/* border-left: 2px solid var(--color-purple_medium);
 	border-right: 2px solid var(--color-purple_medium);
-	border-bottom: 2px solid var(--color-purple_medium);
+	border-bottom: 2px solid var(--color-purple_medium); */
 	border-radius: 0 0 1rem 1rem;
 `;
 
-const SubHeading = styled.div`
+const ParagraphTitle = styled.p`
 	font-size: 2rem;
-	font-weight: 600;
+	font-weight: bold;
+	line-height: 2rem;
 	color: var(--color-purple_dark);
+	margin-bottom: 12px;
+`;
+
+const ParagraphSubTitle = styled.p`
+	font-size: 1.6rem;
+	font-weight: 600;
+	line-height: 1.8rem;
+	color: var(--color-purple_dark);
+	margin-top: 16px;
 	margin-bottom: 8px;
 `;
 const Paragraph = styled.p`
 	font-size: 1.2rem;
 	line-height: 1.6rem;
 	color: var(--color-purple_dark);
-	margin-bottom: 20px;
+	margin-bottom: 2px;
+`;
+const Li = styled.li`
+	position: relative;
+	left: 24px;
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	color: var(--color-purple_dark);
+	margin-bottom: 2px;
+	width: 90%;
+`;
+const Strong = styled.span`
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	color: var(--color-purple_dark);
+	font-weight: 800;
 `;
 const ButtonContainer = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: right;
+	margin-top: 20px;
 `;
 const ButtonDownloadLink = styled.button`
-	background-color: var(--color-white);
+	background-color: var(--color-grey);
 	color: var(--color-purple_dark);
-	padding: 0px 16px;
-	height: 3.8rem;
-	border: 2px solid var(--color-purple_dark);
-	border-radius: 10px;
+	padding: 0px 6px;
+	height: 2rem;
+	border: 1px solid var(--color-purple_dark);
+	border-radius: 5px;
 	cursor: pointer;
 	&.selected {
 		background-color: var(--color-purple_dark);
@@ -186,8 +244,7 @@ const ButtonDownloadLink = styled.button`
 	}
 
 	&:hover {
-		background-color: var(--color-purple_medium);
-		color: var(--color-white);
+		background-color: var(--color-purple_light);
 	}
 
 	&:active {
@@ -196,7 +253,9 @@ const ButtonDownloadLink = styled.button`
 `;
 
 const Label = styled.span`
-	font-weight: 600;
-	font-size: 14px;
-	line-height: 1.4rem;
+	font-weight: 800;
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	color: var(--color-purple_dark);
+	/* margin-bottom: 2px; */
 `;

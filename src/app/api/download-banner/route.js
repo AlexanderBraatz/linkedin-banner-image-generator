@@ -16,7 +16,7 @@ export async function GET(request) {
 
 		// Fetch the image from the remote server
 		const response = await fetch(downloadURL);
-
+		console.log(response.headers.get('content-type'));
 		if (!response.ok) {
 			return NextResponse.json(
 				{ error: 'Error fetching the file' },
@@ -26,7 +26,8 @@ export async function GET(request) {
 
 		const contentType =
 			response.headers.get('content-type') || 'application/octet-stream';
-		const contentDisposition = 'attachment; filename="banner.png"';
+		const contentDisposition =
+			'attachment; filename="quadriga_Linkedin_banner.png"';
 		const buffer = await response.arrayBuffer();
 
 		return new NextResponse(Buffer.from(buffer), {
