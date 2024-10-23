@@ -78,7 +78,8 @@ export default function InputForm({
 						onClick={toggleModel}
 					>
 						<Label>
-							<Plus>+</Plus> Detail
+							{/* <Plus>{model === 'dev' ? '' : '+ '}</Plus>Mit mehr Details */}
+							<Plus></Plus>Mit mehr Details
 						</Label>
 					</ExtraButton>
 					<Button
@@ -165,6 +166,9 @@ const Plus = styled.span`
 	font-weight: medium;
 	font-size: 18px;
 	line-height: 1.8rem;
+	&::before {
+		content: '+ ';
+	}
 `;
 const ExtraButton = styled.button`
 	z-index: 20;
@@ -173,11 +177,15 @@ const ExtraButton = styled.button`
 	background-color: var(--color-white);
 	color: var(--color-purple_dark);
 	padding: 6px 40px 6px 14px; // top right bottom left
+
 	border: 2px solid var(--color-purple_dark);
 	border-radius: 100px 0px 0px 100px;
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: 600;
+	left: 96px; // + Detail
+	left: 137px; // + Mit mehr Detils
+	padding: 6px 0px 6px 14px; // top right bottom left
 
 	transition: 50ms ease-in;
 	&.selected {
@@ -185,16 +193,21 @@ const ExtraButton = styled.button`
 		color: var(--color-purple_dark);
 		border: 2px solid var(--color-purple_dark);
 		transform: scaleX(1.04);
-	}
-	&:active {
-		background-color: var(--color-purple_light);
+		left: 38px;
+		padding: 6px 40px 6px 20px; // top right bottom left
 	}
 
 	&:hover {
-		background-color: var(--color-purple_medium);
-		border: 2px solid var(--color-purple_dark);
+		background-color: var(--color-purple_dark);
+		border: 2px solid var(--color-purple_medium);
 		color: var(--color-white);
 		transform: scaleX(1.04);
+		left: 38px;
+		padding: 6px 40px 6px 10px; // top right bottom left
+		> span > span::before {
+			white-space: pre;
+			content: '   ';
+		}
 	}
 	&.delete:hover {
 		background-color: var(--color-purple_dark);
@@ -214,6 +227,10 @@ const ExtraButton = styled.button`
 		border: 2px solid var(--color-purple_dark);
 		color: var(--color-white);
 		transform: scale(1.04);
+	}
+	&:active {
+		background-color: var(--color-purple_medium);
+		transform: scaleX(1.06);
 	}
 `;
 const Button = styled.button`

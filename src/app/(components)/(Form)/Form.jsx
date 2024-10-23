@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 
 import InputForm from './(InputForm)/InputForm.jsx';
@@ -42,6 +42,12 @@ export default function Form(props) {
 			setModel('schnell');
 		}
 	}
+	useEffect(() => {
+		if (model === 'dev') {
+			generateBannerWithModel(model);
+			setModel('schnell');
+		}
+	}, [model]);
 
 	function handleExampleSelection(example) {
 		setPrompt(example);
@@ -68,11 +74,13 @@ export default function Form(props) {
 	}
 	const generateBanner = async e => {
 		e.preventDefault();
-
+		generateBannerWithModel(model);
+	};
+	const generateBannerWithModel = async currentModel => {
 		try {
 			setIsLoading(true);
 			setDisplayExamples(false);
-			const response = await fetch(`/api/generate-banner/${model}`, {
+			const response = await fetch(`/api/generate-banner/${currentModel}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ prompt })
