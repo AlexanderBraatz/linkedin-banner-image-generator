@@ -75,7 +75,7 @@ export default function DownloadPage({ params }) {
 							<ParagraphSubTitle>Android</ParagraphSubTitle>
 							<ol>
 								<Li>
-									<Paragraph>Tippen Sie auf das Bild.</Paragraph>
+									<Paragraph>Berühren und halten Sie das Bild.</Paragraph>
 								</Li>
 								<Li>
 									<Paragraph>
@@ -101,7 +101,9 @@ export default function DownloadPage({ params }) {
 								</Li>
 							</ol>
 							<br />
-							<ParagraphSubTitle>Oder</ParagraphSubTitle>
+							<ParagraphSubTitle>
+								Oder als Datei herunterladen
+							</ParagraphSubTitle>
 							<ul>
 								<Li>
 									<Paragraph>
