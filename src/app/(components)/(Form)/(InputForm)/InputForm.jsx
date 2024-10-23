@@ -78,7 +78,7 @@ export default function InputForm({
 						onClick={toggleModel}
 					>
 						<Label>
-							<Plus>+</Plus> Detial
+							<Plus>+</Plus> Detail
 						</Label>
 					</ExtraButton>
 					<Button
