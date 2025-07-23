@@ -13,3 +13,22 @@
 	margin: auto;
 	padding-bottom: 20rem;
 }
+@media (max-width: 960px) {
+	.bodyContainer {
+		display: none;
+	}
+}
+.smallScreenPlaceholderContainer {
+	display: none;
+	max-width: 90%;
+	height: 90vh;
+	background-color: var(--color-grey);
+	border-radius: 10px;
+	margin: auto;
+	/* padding-bottom: 20rem; */
+}
+@media (max-width: 960px) {
+	.smallScreenPlaceholderContainer {
+		display: block;
+	}
+}

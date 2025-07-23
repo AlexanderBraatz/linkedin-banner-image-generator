@@ -3,6 +3,7 @@ import './page.css';
 import Header from './(components)/Header.jsx';
 import Instructions from './(components)/(Instructions)/Instructions.jsx';
 import Form from './(components)/(Form)/Form.jsx';
+import MobileDisclaimer from './(components)/(MobileDisclaimer)/MobileDisclaimer';
 
 export default function HomePage() {
 	return (
@@ -16,6 +17,7 @@ export default function HomePage() {
 					<Instructions />
 					<Form />
 				</div>
+				<MobileDisclaimer />
 			</div>
 		</div>
 	);
