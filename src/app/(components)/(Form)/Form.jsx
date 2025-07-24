@@ -65,10 +65,13 @@ export default function Form(props) {
 
 	function extractLinkId(url) {
 		// Assuming the URL is always in this format
+		// a breaking change here was yhqm chaged to xezq
+		// this whole id extraction process is unessasary in hindsight!
+		// example : https://replicate.delivery/xezq/TBkjT7uva87SERfBj5pGlE1llHTRuhWMmQcb6CU9tLuEM9hKA/out-0.png
 		const parts = url.split('/');
-		const yhqmIndex = parts.indexOf('yhqm');
-		if (yhqmIndex !== -1 && parts.length > yhqmIndex + 1) {
-			return parts[yhqmIndex + 1]; // This is the linkId
+		const xezqIndex = parts.indexOf('xezq');
+		if (xezqIndex !== -1 && parts.length > xezqIndex + 1) {
+			return parts[xezqIndex + 1]; // This is the linkId
 		}
 		return null;
 	}
@@ -98,6 +101,7 @@ export default function Form(props) {
 					//make relative link to [my-site]/download page that matches the generated image
 					const bannerImageURL = data.output[0];
 					const linkId = extractLinkId(bannerImageURL);
+					console.log('bannerImageURL', bannerImageURL);
 					const downloadURL = `/download/${linkId}`;
 
 					//make explicit link to [my-site]/download page that matches the generated image
@@ -106,6 +110,7 @@ export default function Form(props) {
 					let downloadURLExplicit;
 					if (baseUrl === 'http://localhost:3000') {
 						downloadURLExplicit = `${baseUrl}/download/${linkId}`; //points to local host in dev and base url in production
+						console.log('linkId form FOrm', linkId);
 					} else {
 						downloadURLExplicit = `https://linkedin-banner-image-generator.vercel.app/download/${linkId}`; //points to local host in dev and base url in production
 					}

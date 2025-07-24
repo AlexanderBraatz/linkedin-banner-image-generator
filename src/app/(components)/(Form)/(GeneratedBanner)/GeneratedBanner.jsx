@@ -89,8 +89,8 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
 	position: relative;
-	/* width: 94.8rem;
-	height: 23.7rem; */
+	width: 94.8rem;
+	height: 23.7rem;
 	background-color: var(--color-grey2);
 
 	border-radius: 1rem;

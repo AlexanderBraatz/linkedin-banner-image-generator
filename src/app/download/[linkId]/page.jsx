@@ -14,8 +14,8 @@ export default function DownloadPage({ params }) {
 		// Clean up the timer when the component unmounts
 		return () => clearTimeout(timer);
 	}, []);
-	// const downloadURLTestExample =('https://replicate.delivery/yhqm/U9UOeFYGWF1MfkrVqqeKiqqjoHNUPwxqdG85ysi0qLwqjXNnA/out-0.png');
-	const downloadURL = `https://replicate.delivery/yhqm/${linkId}/out-0.png`;
+	// const downloadURLTestExample =('https://replicate.delivery/xezq/U9UOeFYGWF1MfkrVqqeKiqqjoHNUPwxqdG85ysi0qLwqjXNnA/out-0.png');
+	const downloadURL = `https://replicate.delivery/xezq/${linkId}/out-0.png`;
 
 	const handleDownload = async e => {
 		e.preventDefault();

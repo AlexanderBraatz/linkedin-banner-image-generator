@@ -24,7 +24,7 @@ export async function POST(request) {
 			total_time: 1.2674
 		},
 		output: [
-			'https://replicate.delivery/yhqm/0EqFZai9XZpCPxUS6TaLFkBxRytIkezARmzfcmdlx5dIe92mA/out-0.webp'
+			'https://replicate.delivery/xezq/0EqFZai9XZpCPxUS6TaLFkBxRytIkezARmzfcmdlx5dIe92mA/out-0.webp'
 		],
 		started_at: '2024-09-10T12:37:27.828477Z',
 		status: 'succeeded',

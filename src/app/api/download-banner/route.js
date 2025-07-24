@@ -12,7 +12,7 @@ export async function GET(request) {
 			);
 		}
 
-		const downloadURL = `https://replicate.delivery/yhqm/${linkId}/out-0.png`;
+		const downloadURL = `https://replicate.delivery/xezq/${linkId}/out-0.png`;
 		// http://localhost:3002/_next/image?url=%2Fimages%2FBanner_speaker.png&w=3840&q=75
 		// Fetch the image from the remote server
 		const response = await fetch(downloadURL);
