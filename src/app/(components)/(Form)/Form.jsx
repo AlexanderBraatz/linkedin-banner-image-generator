@@ -101,7 +101,6 @@ export default function Form(props) {
 					//make relative link to [my-site]/download page that matches the generated image
 					const bannerImageURL = data.output[0];
 					const linkId = extractLinkId(bannerImageURL);
-					console.log('bannerImageURL', bannerImageURL);
 					const downloadURL = `/download/${linkId}`;
 
 					//make explicit link to [my-site]/download page that matches the generated image
@@ -110,7 +109,6 @@ export default function Form(props) {
 					let downloadURLExplicit;
 					if (baseUrl === 'http://localhost:3000') {
 						downloadURLExplicit = `${baseUrl}/download/${linkId}`; //points to local host in dev and base url in production
-						console.log('linkId form FOrm', linkId);
 					} else {
 						downloadURLExplicit = `https://linkedin-banner-image-generator.vercel.app/download/${linkId}`; //points to local host in dev and base url in production
 					}
